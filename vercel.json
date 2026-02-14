@@ -1,0 +1,38 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "cd frontend && npm run build",
+  "outputDirectory": "frontend/.next",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "regions": ["iad1"],
+  "git": {
+    "deploymentEnabled": {
+      "main": true,
+      "develop": true,
+      "*": false
+    }
+  },
+  "env": {
+    "NEXT_PUBLIC_API_URL": {
+      "preview": "https://abhudaya-staging.vercel.app/api",
+      "production": "https://abhudaya.vercel.app/api"
+    }
+  },
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_NODE_ENV": "production"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    }
+  ],
+  "functions": {
+    "api/**/*.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  }
+}
