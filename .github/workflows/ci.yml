@@ -8,6 +8,10 @@ on:
 
 permissions:
   contents: read
+  actions: read
+  checks: read
+  pull-requests: read
+  statuses: read
 
 env:
   NODE_VERSION: '20'
